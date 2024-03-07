@@ -128,7 +128,7 @@ def send_message_to_subscribers(message_text):
 # функция обработки комманды /snd_all
 @bot.message_handler(commands=['snd'])
 def send_to_all(message):
-    if message.from_user.id == 1132585602:
+    if message.from_user.id == YOU_CHAT_ID:
         message_text = message.text.replace('/snd', '')
         if message_text:
             send_message_to_subscribers(message_text)
@@ -149,7 +149,7 @@ def scored_users(message):
     with open("users_sub.txt", 'r') as fp:
         lines = [line.strip() for line in fp if line.strip()]
         count = len(lines)
-        if message.from_user.id == 1132585602:
+        if message.from_user.id == YOU_CHAT_ID:
             bot.reply_to(message, f"Кол-во ягодок: {count}")
         else:
             bot.reply_to(message, '⛔️ Доступ закрыт.')
@@ -191,7 +191,7 @@ def load_reviews():
 # checker
 @bot.message_handler(commands=['/'])
 def check(message):
-    if message.from_user.id == 1132585602:
+    if message.from_user.id == YOU_CHAT_ID:
         bot.reply_to(message, "ok")
 
 load_subscribed_users()
